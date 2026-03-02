@@ -1,27 +1,33 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMoveState : PlayerState
 {
-    public float moveSpeed;
     private Vector2 _moveDirection;
-    private float MoveTimer = 3.0f;
 
     public override void EnterState(PlayerStateManager playerManager, PlayerInfo playerInfo)
     {
         Debug.Log("Estado de Move");
+        playerInfo.playerRenderer.color = Color.blue;
     }
 
     public override void UpdateState(PlayerStateManager playerManager, PlayerInfo playerInfo)
     {
-        if (playerInfo.IsSpacePressed == true)
-        {
-            playerInfo.IsSpacePressed = false;
-            playerManager.SwitchState(playerManager.AttackState);
-        }
 
-        MoveTimer -= Time.deltaTime;
+        float moveX = Input.GetAxisRaw("Horizontal");
+        float moveY = Input.GetAxisRaw("Vertical");
+        _moveDirection = new Vector2(moveX, moveY);
 
-        if (MoveTimer <= 0.0)
+        playerInfo.playerRB2D.linearVelocity = new Vector2(moveX*playerInfo.playerSpeed, moveY*playerInfo.playerSpeed).normalized;
+
+        playerInfo.playerAnimator.SetFloat("Horizontal", moveX);
+        playerInfo.playerAnimator.SetFloat("Vertical", moveY);
+        playerInfo.playerAnimator.SetFloat("Speed", _moveDirection.sqrMagnitude);
+
+
+
+
+        if (Keyboard.current.eKey.wasPressedThisFrame)
         {
             playerManager.SwitchState(playerManager.AttackState);
         }

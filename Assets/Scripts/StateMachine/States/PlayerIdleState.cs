@@ -1,26 +1,18 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerIdleState : PlayerState
 {
-
-    private float IdleTimer = 3f;
-
     public override void EnterState(PlayerStateManager playerManager, PlayerInfo playerInfo)
     {
         Debug.Log("Estado de Idle");
+        playerInfo.playerRenderer.color = Color.green;
+
     }
 
     public override void UpdateState(PlayerStateManager playerManager, PlayerInfo playerInfo)
     {
-        if (playerInfo.IsSpacePressed == true)
-        {
-            playerInfo.IsSpacePressed = false;
-            playerManager.SwitchState(playerManager.MoveState);
-        }
-
-        IdleTimer -= Time.deltaTime;
-
-        if (IdleTimer <= 0.0)
+        if (Keyboard.current.eKey.wasPressedThisFrame)
         {
             playerManager.SwitchState(playerManager.MoveState);
         }
