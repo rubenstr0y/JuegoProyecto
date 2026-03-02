@@ -3,27 +3,18 @@ using UnityEngine.InputSystem;
 
 public class PlayerInfo 
 {
-    public Color _idleColor;
-    public Color _moveColor;
-    public Color _attackColor;
 
-    public SpriteRenderer _playerRenderer;
-    public InputAction next;
-    public bool IsSpacePressed = false;
+    public SpriteRenderer playerRenderer;
+    public Rigidbody2D playerRB2D;
+    public Animator playerAnimator;
 
-    public PlayerInfo(Color idleColor, Color moveColor, Color attackColor, SpriteRenderer playerRenderer)
+    public float playerSpeed = 50f;
+
+
+    public PlayerInfo(SpriteRenderer PlayerRenderer, Rigidbody2D PlayerRB2D, Animator PlayerAnimator)
     {
-        _idleColor = idleColor;
-        _moveColor = moveColor;
-        _attackColor = attackColor;
-        _playerRenderer = playerRenderer;
-        next = InputManager.debugStateActions.DebugStates.NextState;
-        next.performed += NextState;
-    }
-
-    public void NextState(InputAction.CallbackContext callbackContext)
-    {
-        IsSpacePressed = true;
-        Debug.Log("Espacio Presionado");
+        playerRenderer = PlayerRenderer;
+        playerRB2D = PlayerRB2D;
+        playerAnimator = PlayerAnimator;
     }
 }

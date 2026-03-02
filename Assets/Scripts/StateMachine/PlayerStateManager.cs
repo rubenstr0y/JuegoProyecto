@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerStateManager : MonoBehaviour
 {
@@ -9,7 +10,11 @@ public class PlayerStateManager : MonoBehaviour
     public PlayerAttackState AttackState = new PlayerAttackState();
 
     public PlayerInfo playerInfo;
+
     [SerializeField] private SpriteRenderer playerRenderer;
+    [SerializeField] private Rigidbody2D playerRB2D;
+    [SerializeField] private Animator playerAnimator;
+
 
     void Start()
     {
@@ -37,10 +42,6 @@ public class PlayerStateManager : MonoBehaviour
 
     private void CreatePlayerInfo()
     {
-        Color idleColor = Color.blue;
-        Color moveColor = Color.red;
-        Color attackColor = Color.green;
-
-        playerInfo = new PlayerInfo(idleColor, moveColor, attackColor, playerRenderer);
+        playerInfo = new PlayerInfo(playerRenderer,playerRB2D, playerAnimator);
     }
 }

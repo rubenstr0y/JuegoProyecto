@@ -1,29 +1,21 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerAttackState : PlayerState
 {
-    private float AttackTimer = 3.0f;
-
     public override void EnterState(PlayerStateManager playerManager, PlayerInfo playerInfo)
     {
         Debug.Log("Estado de Attack");
+        playerInfo.playerRenderer.color = Color.red;
+
     }
 
     public override void UpdateState(PlayerStateManager playerManager, PlayerInfo playerInfo)
     {
-        if (playerInfo.IsSpacePressed == true)
-        {
-            playerInfo.IsSpacePressed = false;
-            playerManager.SwitchState(playerManager.IdleState);
-        }
-
-        AttackTimer -= Time.deltaTime;
-
-        if (AttackTimer <= 0.0)
+        if (Keyboard.current.eKey.wasPressedThisFrame)
         {
             playerManager.SwitchState(playerManager.IdleState);
         }
-
     }
 
     public override void OnCollisionEnter(PlayerStateManager playerManager, PlayerInfo playerInfo, Collision collision)
