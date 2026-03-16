@@ -1,20 +1,21 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerInfo 
+public class PlayerInfo : MonoBehaviour
 {
+    [SerializeField] public PlayerController playerController;
 
-    public SpriteRenderer playerRenderer;
-    public Rigidbody2D playerRB2D;
-    public Animator playerAnimator;
+    public float playerSpeed = 100f;
+    public Vector2 playerMovedirection;
+    public float moveX;
+    public float moveY;
 
-    public float playerSpeed = 50f;
-
-
-    public PlayerInfo(SpriteRenderer PlayerRenderer, Rigidbody2D PlayerRB2D, Animator PlayerAnimator)
+    public PlayerInfo()
     {
-        playerRenderer = PlayerRenderer;
-        playerRB2D = PlayerRB2D;
-        playerAnimator = PlayerAnimator;
+        playerMovedirection = new Vector2();
+        moveX = playerMovedirection.x;
+        moveY = playerMovedirection.y;
     }
 }
+
+

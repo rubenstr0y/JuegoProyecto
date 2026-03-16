@@ -9,39 +9,28 @@ public class PlayerStateManager : MonoBehaviour
     public PlayerIdleState IdleState = new PlayerIdleState();
     public PlayerAttackState AttackState = new PlayerAttackState();
 
-    public PlayerInfo playerInfo;
-
-    [SerializeField] private SpriteRenderer playerRenderer;
-    [SerializeField] private Rigidbody2D playerRB2D;
-    [SerializeField] private Animator playerAnimator;
+    [SerializeField] public PlayerController playerController;
 
 
     void Start()
     {
-        CreatePlayerInfo();
-
         currentState = IdleState;
-        currentState.EnterState(this, playerInfo);
+        currentState.EnterState(this, playerController.playerInfo);
     }
 
     void Update()
     {
-        currentState.UpdateState(this, playerInfo);
+        currentState.UpdateState(this, playerController.playerInfo);
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        currentState.OnCollisionEnter(this, playerInfo,collision);
+        currentState.OnCollisionEnter(this, playerController.playerInfo,collision);
     }
 
     public void SwitchState(PlayerState newState)
     {
         currentState = newState;
-        currentState.EnterState(this, playerInfo);
-    }
-
-    private void CreatePlayerInfo()
-    {
-        playerInfo = new PlayerInfo(playerRenderer,playerRB2D, playerAnimator);
+        currentState.EnterState(this, playerController.playerInfo);
     }
 }

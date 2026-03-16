@@ -6,13 +6,13 @@ public class PlayerIdleState : PlayerState
     public override void EnterState(PlayerStateManager playerManager, PlayerInfo playerInfo)
     {
         Debug.Log("Estado de Idle");
-        playerInfo.playerRenderer.color = Color.green;
+        playerManager.playerController.playerSpriteRenderer.color = Color.green;
 
     }
 
     public override void UpdateState(PlayerStateManager playerManager, PlayerInfo playerInfo)
     {
-        if (Keyboard.current.eKey.wasPressedThisFrame)
+        if (playerManager.playerController.playerRB2D.linearVelocity != Vector2.zero)
         {
             playerManager.SwitchState(playerManager.MoveState);
         }
