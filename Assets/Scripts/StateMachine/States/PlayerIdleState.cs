@@ -23,6 +23,11 @@ public class PlayerIdleState : PlayerState
         }
     }
 
+    public override void FixedUpdateState(PlayerStateManager playerManager, PlayerInfo playerInfo)
+    {
+
+    }
+
     public override void OnCollisionEnter(PlayerStateManager playerManager, PlayerInfo playerInfo, Collision collision)
     {
 

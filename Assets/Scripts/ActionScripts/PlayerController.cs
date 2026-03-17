@@ -22,25 +22,15 @@ public class PlayerController: MonoBehaviour
 
     void Update()
     {
-
+        playerAnimator.SetFloat("Horizontal", playerInfo.playerMovedirection.x);
+        playerAnimator.SetFloat("Vertical", playerInfo.playerMovedirection.y);
+        playerAnimator.SetFloat("Speed", playerInfo.playerMovedirection.sqrMagnitude);
     }
 
     public void Move()
     {
         // Cambiar esta mierda porque no se por qué funciona o no funciona lollolololol
 
-        playerInfo.playerMovedirection = inputManager.moveAction.ReadValue<Vector2>();
-        playerRB2D.linearVelocity = new Vector2(playerInfo.playerMovedirection.x + playerInfo.playerSpeed * Time.deltaTime, playerInfo.playerMovedirection.y + playerInfo.playerSpeed * Time.deltaTime).normalized;
-        Debug.Log(playerRB2D.position);
-        Debug.Log(playerRB2D.linearVelocity);
-        Debug.Log(playerInfo.playerSpeed);
 
-
-        playerInfo.moveX = playerInfo.playerMovedirection.x;
-        playerInfo.moveY = playerInfo.playerMovedirection.y;
-
-        playerAnimator.SetFloat("Horizontal", playerInfo.moveX);
-        playerAnimator.SetFloat("Vertical", playerInfo.moveY);
-        playerAnimator.SetFloat("Speed", playerInfo.playerMovedirection.sqrMagnitude);
     }
 }   

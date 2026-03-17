@@ -23,6 +23,11 @@ public class PlayerStateManager : MonoBehaviour
         currentState.UpdateState(this, playerController.playerInfo);
     }
 
+    void FixedUpdate()
+    {
+        currentState.FixedUpdateState(this, playerController.playerInfo);
+    }
+
     void OnCollisionEnter(Collision collision)
     {
         currentState.OnCollisionEnter(this, playerController.playerInfo,collision);

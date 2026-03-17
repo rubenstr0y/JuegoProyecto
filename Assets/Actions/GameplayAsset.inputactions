@@ -1,15 +1,15 @@
 {
     "version": 1,
-    "name": "PlayerControls",
+    "name": "GameplayAsset",
     "maps": [
         {
             "name": "Gameplay",
-            "id": "1f7f651a-2b96-4432-ab50-1a1e8f6b9f63",
+            "id": "71f50815-83ac-435e-8bf6-6b250bd2226a",
             "actions": [
                 {
                     "name": "Attack",
                     "type": "Button",
-                    "id": "f8762721-a564-4ce5-bb3b-b13efbdd7fdd",
+                    "id": "93e99cdd-9243-4cd2-9841-d3562826e72a",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -18,40 +18,38 @@
                 {
                     "name": "Move",
                     "type": "Value",
-                    "id": "e7258467-2c3a-49f3-82f6-3ae692d256a8",
+                    "id": "dfa17db1-f37b-4440-8340-b2121a93d24c",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "e9c7623f-c3b1-4c5a-acce-a14f5bd559ca",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
                     "name": "",
-                    "id": "d2c0f2db-0919-4472-9b30-4448610eb660",
+                    "id": "4d587631-a0f3-4283-aafa-4484492a4c62",
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Keyboard",
+                    "groups": "",
                     "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "88c9b5dc-1066-4cc9-be91-5af758f89051",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
                     "name": "2D Vector",
-                    "id": "6f082d08-5ee8-489a-b6a2-b986ae519b5c",
-                    "path": "2DVector",
+                    "id": "ed101839-f2a9-4975-b81b-2ca5b0480f41",
+                    "path": "2DVector(mode=1)",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -61,62 +59,61 @@
                 },
                 {
                     "name": "up",
-                    "id": "b466034d-173f-4144-b189-39ffecd7c63c",
+                    "id": "db5ed462-10df-40a8-b81e-07aed2acad11",
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Keyboard",
+                    "groups": "",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "down",
-                    "id": "43be1d4d-03f1-4be3-a06b-f7461d8f38c8",
+                    "id": "1085d4ff-31ab-4372-85ff-37c7e390b860",
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Keyboard",
+                    "groups": "",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "left",
-                    "id": "3dfef9b6-bb2e-4198-b3a3-6b9300e6310f",
+                    "id": "7abd7c6f-5d7b-4795-8a1d-44fa4b2b72de",
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Keyboard",
+                    "groups": "",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "right",
-                    "id": "0aee66e4-b6e3-46b7-8e6c-8287861e7fbf",
+                    "id": "68ddc883-a8d8-4c04-a532-84532af4246e",
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Keyboard",
+                    "groups": "",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "deb87718-a890-4047-a79a-706a2a8a7743",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
     ],
-    "controlSchemes": [
-        {
-            "name": "Keyboard",
-            "bindingGroup": "Keyboard",
-            "devices": [
-                {
-                    "devicePath": "<Keyboard>",
-                    "isOptional": false,
-                    "isOR": false
-                }
-            ]
-        }
-    ]
+    "controlSchemes": []
 }

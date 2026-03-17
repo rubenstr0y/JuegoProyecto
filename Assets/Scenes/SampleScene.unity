@@ -478,7 +478,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 866e431ec093dc84a82547c8a6dd46c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InputManager
-  InputActions: {fileID: -944628639613478452, guid: 7437aa35d94876748b5319dc88497dab, type: 3}
+  InputActions: {fileID: -944628639613478452, guid: e0cd826cc0c5ea44d9def790f6f970c6, type: 3}
   playerController: {fileID: 597155502}
   moveAction:
     m_Name: Move
