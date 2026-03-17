@@ -524,10 +524,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInfo
   playerController: {fileID: 597155502}
-  playerSpeed: 0
+  playerSpeed: 4
   playerMovedirection: {x: 0, y: 0}
-  moveX: 0
-  moveY: 0
 --- !u!114 &597155502
 MonoBehaviour:
   m_ObjectHideFlags: 0

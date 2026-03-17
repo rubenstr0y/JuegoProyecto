@@ -7,13 +7,7 @@ public class PlayerInfo : MonoBehaviour
 
     public float playerSpeed = 2.0f;
     public Vector2 playerMovedirection;
-    public float moveX;
-    public float moveY;
 
-    public PlayerInfo()
-    {
-        playerMovedirection = new Vector2();
-    }
 }
 
 

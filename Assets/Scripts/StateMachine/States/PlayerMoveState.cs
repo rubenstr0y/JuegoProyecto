@@ -9,10 +9,15 @@ public class PlayerMoveState : PlayerState
         playerInfo.playerController.playerSpriteRenderer.color = Color.blue;
     }
 
+    public override void ExitState(PlayerStateManager playerManager, PlayerInfo playerInfo)
+    {
+
+    }
+
     public override void UpdateState(PlayerStateManager playerManager, PlayerInfo playerInfo)
     {
 
-        if (playerManager.playerController.inputManager.player_wants_idle)
+        if (playerInfo.playerMovedirection.sqrMagnitude <= 0.01)
         {
             playerManager.SwitchState(playerManager.IdleState);
         }
@@ -27,7 +32,6 @@ public class PlayerMoveState : PlayerState
     public override void FixedUpdateState(PlayerStateManager playerManager, PlayerInfo playerInfo)
     {
         playerInfo.playerMovedirection = playerManager.playerController.inputManager.moveAction.ReadValue<Vector2>();
-
         playerManager.playerController.playerRB2D.linearVelocity = (playerInfo.playerMovedirection.normalized * playerInfo.playerSpeed);
 
     }

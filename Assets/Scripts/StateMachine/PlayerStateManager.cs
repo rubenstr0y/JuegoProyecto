@@ -35,6 +35,7 @@ public class PlayerStateManager : MonoBehaviour
 
     public void SwitchState(PlayerState newState)
     {
+        currentState.ExitState(this, playerController.playerInfo);
         currentState = newState;
         currentState.EnterState(this, playerController.playerInfo);
     }

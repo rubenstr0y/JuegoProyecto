@@ -12,7 +12,6 @@ public class InputManager: MonoBehaviour
 
     // BOOLEANOS
 
-    public bool player_wants_idle { get; private set; }
     public bool player_wants_move { get; private set; }
     public bool player_wants_attack { get; private set; }
 
@@ -39,13 +38,12 @@ public class InputManager: MonoBehaviour
 
     void Start()
     {
-        player_wants_idle = true;
+
     }
 
     void Update()
     {
         player_wants_move = moveAction.ReadValue<Vector2>() != Vector2.zero;
         player_wants_attack = attackAction.triggered;
-        player_wants_idle = (moveAction.triggered || attackAction.triggered);
     }
 }

@@ -26,11 +26,4 @@ public class PlayerController: MonoBehaviour
         playerAnimator.SetFloat("Vertical", playerInfo.playerMovedirection.y);
         playerAnimator.SetFloat("Speed", playerInfo.playerMovedirection.sqrMagnitude);
     }
-
-    public void Move()
-    {
-        // Cambiar esta mierda porque no se por qué funciona o no funciona lollolololol
-
-
-    }
 }   

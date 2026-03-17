@@ -10,6 +10,11 @@ public class PlayerIdleState : PlayerState
 
     }
 
+    public override void ExitState(PlayerStateManager playerManager, PlayerInfo playerInfo)
+    {
+
+    }
+
     public override void UpdateState(PlayerStateManager playerManager, PlayerInfo playerInfo)
     {
         if (playerManager.playerController.inputManager.player_wants_move)
