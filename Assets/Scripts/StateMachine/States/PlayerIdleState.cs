@@ -12,9 +12,14 @@ public class PlayerIdleState : PlayerState
 
     public override void UpdateState(PlayerStateManager playerManager, PlayerInfo playerInfo)
     {
-        if (playerManager.playerController.playerRB2D.linearVelocity != Vector2.zero)
+        if (playerManager.playerController.inputManager.player_wants_move)
         {
             playerManager.SwitchState(playerManager.MoveState);
+        }
+
+        if (playerManager.playerController.inputManager.player_wants_attack)
+        {
+            playerManager.SwitchState(playerManager.AttackState);
         }
     }
 

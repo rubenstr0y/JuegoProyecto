@@ -12,14 +12,14 @@ public class PlayerMoveState : PlayerState
     public override void UpdateState(PlayerStateManager playerManager, PlayerInfo playerInfo)
     {
 
-        playerInfo.playerController.playerRB2D.linearVelocity = new Vector2(playerInfo.moveX * playerInfo.playerSpeed, playerInfo.moveY * playerInfo.playerSpeed).normalized;
+        playerManager.playerController.Move();
 
-        playerManager.playerController.playerAnimator.SetFloat("Horizontal", playerInfo.moveX);
-        playerManager.playerController.playerAnimator.SetFloat("Vertical", playerInfo.moveY);
-        playerManager.playerController.playerAnimator.SetFloat("Speed", playerInfo.playerMovedirection.sqrMagnitude);
+        if (playerManager.playerController.inputManager.player_wants_idle)
+        {
+            playerManager.SwitchState(playerManager.IdleState);
+        }
 
-
-        if (Keyboard.current.eKey.wasPressedThisFrame)
+        if (playerManager.playerController.inputManager.player_wants_attack)
         {
             playerManager.SwitchState(playerManager.AttackState);
         }

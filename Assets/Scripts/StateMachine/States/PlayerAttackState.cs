@@ -12,9 +12,14 @@ public class PlayerAttackState : PlayerState
 
     public override void UpdateState(PlayerStateManager playerManager, PlayerInfo playerInfo)
     {
-        if (Keyboard.current.eKey.wasPressedThisFrame)
+        if (playerManager.playerController.inputManager.player_wants_idle)
         {
             playerManager.SwitchState(playerManager.IdleState);
+        }
+
+        if (playerManager.playerController.inputManager.player_wants_move)
+        {
+            playerManager.SwitchState(playerManager.MoveState);
         }
     }
 
