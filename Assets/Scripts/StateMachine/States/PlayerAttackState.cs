@@ -17,10 +17,9 @@ public class PlayerAttackState : PlayerState
 
     public override void UpdateState(PlayerStateManager playerManager, PlayerInfo playerInfo)
     {
-
-        if (playerManager.playerController.inputManager.player_wants_move)
+        if (!(playerManager.playerController.playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attack")))
         {
-            playerManager.SwitchState(playerManager.MoveState);
+            playerManager.SwitchState(playerManager.IdleState);
         }
     }
 

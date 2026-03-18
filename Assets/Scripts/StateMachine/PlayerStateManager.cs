@@ -8,6 +8,7 @@ public class PlayerStateManager : MonoBehaviour
     public PlayerMoveState MoveState = new PlayerMoveState();
     public PlayerIdleState IdleState = new PlayerIdleState();
     public PlayerAttackState AttackState = new PlayerAttackState();
+    public PlayerHurtState HurtState = new PlayerHurtState();
 
     [SerializeField] public PlayerController playerController;
 

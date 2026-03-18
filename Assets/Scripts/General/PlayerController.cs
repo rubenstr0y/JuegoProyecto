@@ -25,5 +25,7 @@ public class PlayerController: MonoBehaviour
         playerAnimator.SetFloat("Horizontal", playerInfo.playerMovedirection.x);
         playerAnimator.SetFloat("Vertical", playerInfo.playerMovedirection.y);
         playerAnimator.SetFloat("Speed", playerInfo.playerMovedirection.sqrMagnitude);
+
+        playerAnimator.SetBool("Attack", inputManager.player_wants_attack);
     }
 }   

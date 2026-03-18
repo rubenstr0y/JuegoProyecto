@@ -33,7 +33,6 @@ public class PlayerMoveState : PlayerState
     {
         playerInfo.playerMovedirection = playerManager.playerController.inputManager.moveAction.ReadValue<Vector2>();
         playerManager.playerController.playerRB2D.linearVelocity = (playerInfo.playerMovedirection.normalized * playerInfo.playerSpeed);
-
     }
 
     public override void OnCollisionEnter(PlayerStateManager playerManager, PlayerInfo playerInfo, Collision collision)
