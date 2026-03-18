@@ -22,10 +22,16 @@ public class PlayerController: MonoBehaviour
 
     void Update()
     {
-        playerAnimator.SetFloat("Horizontal", playerInfo.playerMovedirection.x);
-        playerAnimator.SetFloat("Vertical", playerInfo.playerMovedirection.y);
-        playerAnimator.SetFloat("Speed", playerInfo.playerMovedirection.sqrMagnitude);
+        playerAnimator.SetFloat("Horizontal", playerInfo.playerMoveDirection.x);
+        playerAnimator.SetFloat("Vertical", playerInfo.playerMoveDirection.y);
+        playerAnimator.SetFloat("Speed", playerRB2D.linearVelocity.sqrMagnitude);
 
         playerAnimator.SetBool("Attack", inputManager.player_wants_attack);
     }
+    
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        Debug.Log("Algo ha entrado");
+    }
+
 }   

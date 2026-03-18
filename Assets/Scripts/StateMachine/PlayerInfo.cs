@@ -5,10 +5,13 @@ public class PlayerInfo : MonoBehaviour
 {
     [SerializeField] public PlayerController playerController;
 
-    public float playerSpeed = 2.0f;
-    public float playerHealth = 100.0f;
+    public float playerSpeed;
+    public float playerFriction;
 
-    public Vector2 playerMovedirection;
+    public float playerHealth;
+
+
+    public Vector2 playerMoveDirection;
 
 }
 

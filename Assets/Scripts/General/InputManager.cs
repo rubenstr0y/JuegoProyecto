@@ -16,12 +16,12 @@ public class InputManager: MonoBehaviour
     public bool player_wants_attack { get; private set; }
 
 
-    void Awake()
+    private void Awake()
     {
         gameplayActions = new GameplayAsset();
     }
 
-    void OnEnable()
+    private void OnEnable()
     {
         moveAction = gameplayActions.Gameplay.Move;       // WASD
         attackAction = gameplayActions.Gameplay.Attack;   // SPACE
@@ -30,18 +30,18 @@ public class InputManager: MonoBehaviour
         attackAction.Enable();
     }
 
-    void OnDisable()
+    private void OnDisable()
     {
         moveAction.Disable();
         attackAction.Disable();
     }
 
-    void Start()
+    private void Start()
     {
 
     }
 
-    void Update()
+    private void Update()
     {
         player_wants_move = moveAction.ReadValue<Vector2>() != Vector2.zero;
         player_wants_attack = attackAction.triggered;

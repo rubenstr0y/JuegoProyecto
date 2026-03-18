@@ -17,7 +17,7 @@ public class PlayerMoveState : PlayerState
     public override void UpdateState(PlayerStateManager playerManager, PlayerInfo playerInfo)
     {
 
-        if (playerInfo.playerMovedirection.sqrMagnitude <= 0.01)
+        if (playerInfo.playerMoveDirection.sqrMagnitude <= 0.01)
         {
             playerManager.SwitchState(playerManager.IdleState);
         }
@@ -31,8 +31,8 @@ public class PlayerMoveState : PlayerState
 
     public override void FixedUpdateState(PlayerStateManager playerManager, PlayerInfo playerInfo)
     {
-        playerInfo.playerMovedirection = playerManager.playerController.inputManager.moveAction.ReadValue<Vector2>();
-        playerManager.playerController.playerRB2D.linearVelocity = (playerInfo.playerMovedirection.normalized * playerInfo.playerSpeed);
+        playerInfo.playerMoveDirection = playerManager.playerController.inputManager.moveAction.ReadValue<Vector2>();
+        playerManager.playerController.playerRB2D.linearVelocity = (playerInfo.playerMoveDirection.normalized * playerInfo.playerSpeed);
     }
 
     public override void OnCollisionEnter(PlayerStateManager playerManager, PlayerInfo playerInfo, Collision collision)
