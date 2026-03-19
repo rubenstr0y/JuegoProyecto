@@ -10,7 +10,6 @@ public class PlayerInfo : MonoBehaviour
 
     public float playerHealth;
 
-
     public Vector2 playerMoveDirection;
 
 }

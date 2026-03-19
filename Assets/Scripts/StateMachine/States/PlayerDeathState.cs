@@ -1,12 +1,13 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerIdleState : PlayerState
+public class PlayerDeathState : PlayerState
 {
+
     public override void EnterState(PlayerStateManager playerManager, PlayerInfo playerInfo)
     {
-        Debug.Log("Estado de Idle");
-        playerManager.playerController.playerSpriteRenderer.color = Color.green;
+        Debug.Log("Estado de Death");
+        playerInfo.playerController.playerSpriteRenderer.color = Color.orange;
     }
 
     public override void ExitState(PlayerStateManager playerManager, PlayerInfo playerInfo)
@@ -16,19 +17,9 @@ public class PlayerIdleState : PlayerState
 
     public override void UpdateState(PlayerStateManager playerManager, PlayerInfo playerInfo)
     {
-        if (playerManager.playerController.player_wants_move)
+        if (!(playerManager.playerController.playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Dead")))
         {
-            playerManager.SwitchState(playerManager.MoveState);
-        }
-
-        if (playerManager.playerController.player_wants_attack)
-        {
-            playerManager.SwitchState(playerManager.AttackState);
-        }
-
-        if (playerManager.playerController.player_wants_object)
-        {
-            playerManager.SwitchState(playerManager.ObjectState);
+            playerManager.SwitchState(playerManager.IdleState);
         }
     }
 

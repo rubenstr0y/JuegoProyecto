@@ -25,7 +25,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "New action",
+                    "name": "Object",
                     "type": "Button",
                     "id": "e9c7623f-c3b1-4c5a-acce-a14f5bd559ca",
                     "expectedControlType": "",
@@ -104,11 +104,11 @@
                 {
                     "name": "",
                     "id": "deb87718-a890-4047-a79a-706a2a8a7743",
-                    "path": "",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "Object",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

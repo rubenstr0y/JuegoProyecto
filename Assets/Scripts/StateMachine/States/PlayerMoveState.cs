@@ -22,9 +22,19 @@ public class PlayerMoveState : PlayerState
             playerManager.SwitchState(playerManager.IdleState);
         }
 
-        if (playerManager.playerController.inputManager.player_wants_attack)
+        if (playerManager.playerController.player_wants_attack)
         {
             playerManager.SwitchState(playerManager.AttackState);
+        }
+
+        if (playerManager.playerController.player_was_hurt)
+        {
+            playerManager.SwitchState(playerManager.HurtState);
+        }
+
+        if (playerManager.playerController.player_wants_object)
+        {
+            playerManager.SwitchState(playerManager.ObjectState);
         }
     }
 
@@ -33,9 +43,15 @@ public class PlayerMoveState : PlayerState
     {
         playerInfo.playerMoveDirection = playerManager.playerController.inputManager.moveAction.ReadValue<Vector2>();
         playerManager.playerController.playerRB2D.linearVelocity = (playerInfo.playerMoveDirection.normalized * playerInfo.playerSpeed);
+
     }
 
-    public override void OnCollisionEnter(PlayerStateManager playerManager, PlayerInfo playerInfo, Collision collision)
+    public override void OnTriggerEnter2D(PlayerStateManager playerManager, PlayerInfo playerInfo, Collider2D collider)
+    {
+
+    }
+
+    public override void OnCollisionEnter2D(PlayerStateManager playerManager, PlayerInfo playerInfo, Collision2D collision)
     {
 
     }
