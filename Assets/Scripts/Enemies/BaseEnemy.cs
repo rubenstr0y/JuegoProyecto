@@ -1,19 +1,36 @@
 using UnityEngine;
 
-public abstract class BaseEnemy
+public class BaseEnemy: MonoBehaviour
 {
-    public Vector2 facingDirection;
+    private Vector2 facingDirection;
     public float enemyHealth;
     private float actionTime;
     private float idleTime;
 
-    public abstract void Action();
+    [SerializeField] MonoBehaviour player;
+    [SerializeField] Animator animator;
+    [SerializeField] Rigidbody2D rb2d;
 
-    public abstract void GoUp();
+    void Update()
+    {
 
-    public abstract void GoDown();
+    }
 
-    public abstract void ChangeHole();
+    void FixedUpdate()
+    {
+        facingDirection = new Vector2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y).normalized;
 
-    public abstract void Die();
+        animator.SetFloat("DirectionX", facingDirection.x);
+        animator.SetFloat("DirectionY", facingDirection.y);
+    }
+
+    public virtual void Action() { }
+
+    public virtual void GoUp() { }
+
+    public virtual void GoDown() { }
+
+    public virtual void ChangeHole() { }
+
+    public virtual void Die() { }
 }

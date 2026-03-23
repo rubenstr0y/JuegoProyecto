@@ -1,16 +1,30 @@
 using UnityEngine;
 
-public class NewMonoBehaviourScript : MonoBehaviour
+public class BruteEnemy : BaseEnemy
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    public override void Action()
     {
-        
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void GoUp() 
     {
-        
+    
+    }
+
+    public override void GoDown()
+    { 
+    
+    }
+
+    public override void ChangeHole() 
+    { 
+    
+    }
+
+    public override void Die() 
+    { 
+    
     }
 }
