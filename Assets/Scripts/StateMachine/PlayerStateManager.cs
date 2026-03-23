@@ -5,43 +5,46 @@ public class PlayerStateManager : MonoBehaviour
 {
     public PlayerState currentState;
 
-    public PlayerMoveState MoveState = new PlayerMoveState();
-    public PlayerIdleState IdleState = new PlayerIdleState();
-    public PlayerAttackState AttackState = new PlayerAttackState();
+    public PlayerMoveState MoveState        = new PlayerMoveState();
+    public PlayerIdleState IdleState        = new PlayerIdleState();
+    public PlayerAttackState AttackState    = new PlayerAttackState();
+    public PlayerHurtState HurtState        = new PlayerHurtState();
+    public PlayerDeathState DeathState      = new PlayerDeathState();
+    public PlayerObjectState ObjectState    = new PlayerObjectState();
 
-    public PlayerInfo playerInfo;
-
-    [SerializeField] private SpriteRenderer playerRenderer;
-    [SerializeField] private Rigidbody2D playerRB2D;
-    [SerializeField] private Animator playerAnimator;
+    [SerializeField] public PlayerController playerController;
 
 
-    void Start()
+    private void Start()
     {
-        CreatePlayerInfo();
-
         currentState = IdleState;
-        currentState.EnterState(this, playerInfo);
-    }
-
-    void Update()
-    {
-        currentState.UpdateState(this, playerInfo);
-    }
-
-    void OnCollisionEnter(Collision collision)
-    {
-        currentState.OnCollisionEnter(this, playerInfo,collision);
+        currentState.EnterState(this, playerController.playerInfo);
     }
 
     public void SwitchState(PlayerState newState)
     {
+        currentState.ExitState(this, playerController.playerInfo);
         currentState = newState;
-        currentState.EnterState(this, playerInfo);
+        currentState.EnterState(this, playerController.playerInfo);
     }
 
-    private void CreatePlayerInfo()
+    private void Update()
     {
-        playerInfo = new PlayerInfo(playerRenderer,playerRB2D, playerAnimator);
+        currentState.UpdateState(this, playerController.playerInfo);
+    }
+
+    private void FixedUpdate()
+    {
+        currentState.FixedUpdateState(this, playerController.playerInfo);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        currentState.OnCollisionEnter2D(this, playerController.playerInfo,collision);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        currentState.OnTriggerEnter2D(this, playerController.playerInfo, collider);
     }
 }

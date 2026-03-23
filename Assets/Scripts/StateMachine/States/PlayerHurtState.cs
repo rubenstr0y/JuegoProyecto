@@ -1,40 +1,37 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
+using System.Collections;
 
-public class PlayerIdleState : PlayerState
+public class PlayerHurtState: PlayerState
 {
     public override void EnterState(PlayerStateManager playerManager, PlayerInfo playerInfo)
     {
-        Debug.Log("Estado de Idle");
-        playerManager.playerController.playerSpriteRenderer.color = Color.green;
+        if (playerManager.playerController.player_was_killed)
+        {
+            playerManager.SwitchState(playerManager.DeathState);
+        }
+
+        Debug.Log("Estado de Hurt");
+        playerInfo.playerController.playerSpriteRenderer.color = Color.red;
     }
 
     public override void ExitState(PlayerStateManager playerManager, PlayerInfo playerInfo)
     {
-
+        playerManager.playerController.player_was_hurt = false;
+        playerManager.playerController.playerRB2D.linearVelocity = Vector2.zero;
     }
 
     public override void UpdateState(PlayerStateManager playerManager, PlayerInfo playerInfo)
     {
-        if (playerManager.playerController.player_wants_move)
+        
+        if (!(playerManager.playerController.playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Hurt_Rotate")))
         {
-            playerManager.SwitchState(playerManager.MoveState);
-        }
-
-        if (playerManager.playerController.player_wants_attack)
-        {
-            playerManager.SwitchState(playerManager.AttackState);
-        }
-
-        if (playerManager.playerController.player_wants_object)
-        {
-            playerManager.SwitchState(playerManager.ObjectState);
+            playerManager.SwitchState(playerManager.IdleState);
         }
     }
 
     public override void FixedUpdateState(PlayerStateManager playerManager, PlayerInfo playerInfo)
     {
-
+        playerManager.playerController.DeceleratePlayer();
     }
 
     public override void OnTriggerEnter2D(PlayerStateManager playerManager, PlayerInfo playerInfo, Collider2D collider)
@@ -46,4 +43,5 @@ public class PlayerIdleState : PlayerState
     {
 
     }
+
 }

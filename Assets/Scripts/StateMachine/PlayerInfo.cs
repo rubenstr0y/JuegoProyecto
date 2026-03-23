@@ -1,20 +1,17 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerInfo 
+public class PlayerInfo : MonoBehaviour
 {
+    [SerializeField] public PlayerController playerController;
 
-    public SpriteRenderer playerRenderer;
-    public Rigidbody2D playerRB2D;
-    public Animator playerAnimator;
+    public float playerSpeed;
+    public float playerFriction;
 
-    public float playerSpeed = 50f;
+    public float playerHealth;
 
+    public Vector2 playerMoveDirection;
 
-    public PlayerInfo(SpriteRenderer PlayerRenderer, Rigidbody2D PlayerRB2D, Animator PlayerAnimator)
-    {
-        playerRenderer = PlayerRenderer;
-        playerRB2D = PlayerRB2D;
-        playerAnimator = PlayerAnimator;
-    }
 }
+
+
