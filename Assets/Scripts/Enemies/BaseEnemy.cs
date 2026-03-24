@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BaseEnemy: MonoBehaviour
+public class BaseEnemy : MonoBehaviour
 {
     private Vector2 facingDirection;
     public float enemyHealth;
@@ -33,4 +33,17 @@ public class BaseEnemy: MonoBehaviour
     public virtual void ChangeHole() { }
 
     public virtual void Die() { }
+
+    public Vector2 FindClosestPosition()
+    {
+        Vector2 myPosition = transform.position;
+        Vector2 playerPosition = player.transform.position;
+        Vector2 closestPosition = Vector2.positiveInfinity;
+
+
+
+
+        
+        return closestPosition;
+    }
 }
