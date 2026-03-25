@@ -4,10 +4,18 @@ using System.Collections.Generic;
 
 public class BaseEnemy : MonoBehaviour
 {
+    private enum EnemyStates {
+        Idle,
+        Attack,
+        Changing
+        }
+
     private Vector2 facingDirection;
     public float enemyHealth;
     private float actionTime;
     private float idleTime;
+
+    
 
     [SerializeField] MonoBehaviour player;
     [SerializeField] Animator animator;
@@ -21,9 +29,7 @@ public class BaseEnemy : MonoBehaviour
 
     void FixedUpdate()
     {
-        facingDirection = (player.transform.position - transform.position).normalized;
-        animator.SetFloat("DirectionX", facingDirection.x);
-        animator.SetFloat("DirectionY", facingDirection.y);
+
     }
 
     public virtual void Action() { }
@@ -36,23 +42,29 @@ public class BaseEnemy : MonoBehaviour
 
     public virtual void Die() { }
 
-    public Vector2 FindClosestPosition()
+    protected Vector2 FindClosestPosition()
     {
         List<Hole> AvaliableHoles = GameManager.SearchAvaliableHoles();
         Vector2 playerPosition = player.transform.position;
-        Vector2 closestPosition = Vector2.positiveInfinity;
+        float closestDistance = 999999f;
+        Hole closestHole = null;
 
         foreach (Hole hole in AvaliableHoles)
         {
-            float closestDistance = closestPosition.magnitude;
-            Vector2 holePosition = hole.transform.position;
-            float currentDistance = (playerPosition - holePosition).magnitude;
-
-            if (currentDistance < closestDistance)
+            float distance = Vector2.Distance(playerPosition, hole.transform.position);
+            if (distance < closestDistance)
             {
-                closestPosition = holePosition;
+                closestDistance = distance;
+                closestHole = hole;
             }
         }
-        return closestPosition;
+        return closestHole.transform.position;
+    }
+
+    protected void UpdateAnimator()
+    {
+        facingDirection = (player.transform.position - transform.position).normalized;
+        animator.SetFloat("DirectionX", facingDirection.x);
+        animator.SetFloat("DirectionY", facingDirection.y);
     }
 }

@@ -5,10 +5,8 @@ public class BruteEnemy : BaseEnemy
 
     private void FixedUpdate()
     {
-        if (Input.GetKeyDown("t"))
-        {
-            ChangeHole();
-        }
+        ChangeHole();
+        UpdateAnimator();
     }
 
     public override void Action()

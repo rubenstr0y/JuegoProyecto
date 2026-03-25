@@ -3,8 +3,8 @@ using UnityEngine;
 public class Hole : MonoBehaviour
 {
 
-    public bool is_hole_active { get; set; }
-    public bool is_hole_occupied {  get; set; }
+    public bool is_hole_active;
+    public bool is_hole_occupied;
     [SerializeField] SpriteRenderer holeSpriteRenderer;
 
     void Start()
