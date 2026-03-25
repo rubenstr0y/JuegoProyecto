@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections.Generic;
+
 
 public class BaseEnemy : MonoBehaviour
 {
@@ -10,6 +12,7 @@ public class BaseEnemy : MonoBehaviour
     [SerializeField] MonoBehaviour player;
     [SerializeField] Animator animator;
     [SerializeField] Rigidbody2D rb2d;
+    [SerializeField] GameManager GameManager;
 
     void Update()
     {
@@ -18,8 +21,7 @@ public class BaseEnemy : MonoBehaviour
 
     void FixedUpdate()
     {
-        facingDirection = new Vector2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y).normalized;
-
+        facingDirection = (player.transform.position - transform.position).normalized;
         animator.SetFloat("DirectionX", facingDirection.x);
         animator.SetFloat("DirectionY", facingDirection.y);
     }
@@ -36,14 +38,21 @@ public class BaseEnemy : MonoBehaviour
 
     public Vector2 FindClosestPosition()
     {
-        Vector2 myPosition = transform.position;
+        List<Hole> AvaliableHoles = GameManager.SearchAvaliableHoles();
         Vector2 playerPosition = player.transform.position;
         Vector2 closestPosition = Vector2.positiveInfinity;
 
+        foreach (Hole hole in AvaliableHoles)
+        {
+            float closestDistance = closestPosition.magnitude;
+            Vector2 holePosition = hole.transform.position;
+            float currentDistance = (playerPosition - holePosition).magnitude;
 
-
-
-        
+            if (currentDistance < closestDistance)
+            {
+                closestPosition = holePosition;
+            }
+        }
         return closestPosition;
     }
 }

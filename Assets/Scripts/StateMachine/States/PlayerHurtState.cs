@@ -34,14 +34,8 @@ public class PlayerHurtState: PlayerState
         playerManager.playerController.DeceleratePlayer();
     }
 
-    public override void OnTriggerEnter2D(PlayerStateManager playerManager, PlayerInfo playerInfo, Collider2D collider)
-    {
+    public override void OnTriggerEnter2D(PlayerStateManager playerManager, PlayerInfo playerInfo, Collider2D collider) { }
 
-    }
-
-    public override void OnCollisionEnter2D(PlayerStateManager playerManager, PlayerInfo playerInfo, Collision2D collision)
-    {
-
-    }
+    public override void OnCollisionEnter2D(PlayerStateManager playerManager, PlayerInfo playerInfo, Collision2D collision) { }
 
 }

@@ -3,6 +3,14 @@ using UnityEngine;
 public class BruteEnemy : BaseEnemy
 {
 
+    private void FixedUpdate()
+    {
+        if (Input.GetKeyDown("t"))
+        {
+            ChangeHole();
+        }
+    }
+
     public override void Action()
     {
 
@@ -19,8 +27,8 @@ public class BruteEnemy : BaseEnemy
     }
 
     public override void ChangeHole() 
-    { 
-    
+    {
+        transform.position = FindClosestPosition();
     }
 
     public override void Die() 
