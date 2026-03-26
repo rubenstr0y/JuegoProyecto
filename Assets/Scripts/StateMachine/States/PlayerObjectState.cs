@@ -6,7 +6,6 @@ public class PlayerObjectState:PlayerState
 
     public override void EnterState(PlayerStateManager playerManager, PlayerInfo playerInfo)
     {
-        Debug.Log("Estado de Object");
         playerInfo.playerController.playerSpriteRenderer.color = Color.yellow;
     }
 

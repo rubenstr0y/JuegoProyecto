@@ -5,7 +5,6 @@ public class PlayerAttackState : PlayerState
 {
     public override void EnterState(PlayerStateManager playerManager, PlayerInfo playerInfo)
     {
-        Debug.Log("Estado de Attack");
         playerManager.playerController.playerSpriteRenderer.color = Color.purple;
     }
 

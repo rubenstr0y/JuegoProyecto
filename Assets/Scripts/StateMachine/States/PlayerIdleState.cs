@@ -5,7 +5,6 @@ public class PlayerIdleState : PlayerState
 {
     public override void EnterState(PlayerStateManager playerManager, PlayerInfo playerInfo)
     {
-        Debug.Log("Estado de Idle");
         playerManager.playerController.playerSpriteRenderer.color = Color.green;
     }
 
