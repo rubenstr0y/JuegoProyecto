@@ -10,7 +10,6 @@ public class PlayerHurtState: PlayerState
             playerManager.SwitchState(playerManager.DeathState);
         }
 
-        Debug.Log("Estado de Hurt");
         playerInfo.playerController.playerSpriteRenderer.color = Color.red;
     }
 

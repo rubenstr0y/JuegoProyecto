@@ -5,7 +5,6 @@ public class PlayerMoveState : PlayerState
 {
     public override void EnterState(PlayerStateManager playerManager, PlayerInfo playerInfo)
     {
-        Debug.Log("Estado de Move");
         playerInfo.playerController.playerSpriteRenderer.color = Color.blue;
     }
 

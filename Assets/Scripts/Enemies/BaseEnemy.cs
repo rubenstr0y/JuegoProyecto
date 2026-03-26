@@ -4,62 +4,39 @@ using System.Collections.Generic;
 
 public class BaseEnemy : MonoBehaviour
 {
-    private enum EnemyStates {
-        Idle,
-        Attack,
-        Changing
-        }
-
-    private Vector2 facingDirection;
+    protected Vector2 facingDirection;
     public float enemyHealth;
-    private float actionTime;
-    private float idleTime;
+    public float actionTime;
+    public float idleTime;
 
-    
+    protected bool waitAfterAction;
+    protected bool waitBeforeAction;
 
-    [SerializeField] MonoBehaviour player;
-    [SerializeField] Animator animator;
-    [SerializeField] Rigidbody2D rb2d;
-    [SerializeField] GameManager GameManager;
+    [SerializeField] protected MonoBehaviour player;
+    [SerializeField] protected Animator animator;
+    [SerializeField] protected Rigidbody2D rb2d;
+    [SerializeField] protected GameManager GameManager;
 
-    void Update()
+    protected enum EnemyStates
     {
-
+        Idle,
+        Action,
+        Changing
     }
 
-    void FixedUpdate()
-    {
+    protected EnemyStates CurrentState;
 
-    }
+    public virtual void Idle() { }
 
     public virtual void Action() { }
 
-    public virtual void GoUp() { }
-
-    public virtual void GoDown() { }
-
     public virtual void ChangeHole() { }
 
-    public virtual void Die() { }
+    protected void GoUp() { }
 
-    protected Vector2 FindClosestPosition()
-    {
-        List<Hole> AvaliableHoles = GameManager.SearchAvaliableHoles();
-        Vector2 playerPosition = player.transform.position;
-        float closestDistance = 999999f;
-        Hole closestHole = null;
+    protected void GoDown() { }
 
-        foreach (Hole hole in AvaliableHoles)
-        {
-            float distance = Vector2.Distance(playerPosition, hole.transform.position);
-            if (distance < closestDistance)
-            {
-                closestDistance = distance;
-                closestHole = hole;
-            }
-        }
-        return closestHole.transform.position;
-    }
+    protected void Die() { }
 
     protected void UpdateAnimator()
     {
