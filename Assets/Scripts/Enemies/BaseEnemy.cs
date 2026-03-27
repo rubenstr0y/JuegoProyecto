@@ -5,12 +5,14 @@ using System.Collections.Generic;
 public class BaseEnemy : MonoBehaviour
 {
     protected Vector2 facingDirection;
+    protected bool IsIdle;
+    protected bool IsAction;
+
     public float enemyHealth;
     public float actionTime;
     public float idleTime;
 
-    protected bool waitAfterAction;
-    protected bool waitBeforeAction;
+    protected bool isActionFinished;
 
     [SerializeField] protected MonoBehaviour player;
     [SerializeField] protected Animator animator;
@@ -41,6 +43,9 @@ public class BaseEnemy : MonoBehaviour
     protected void UpdateAnimator()
     {
         facingDirection = (player.transform.position - transform.position).normalized;
+        animator.SetBool("IsIdle",IsIdle);
+        animator.SetBool("IsAction", IsAction);
+
         animator.SetFloat("DirectionX", facingDirection.x);
         animator.SetFloat("DirectionY", facingDirection.y);
     }

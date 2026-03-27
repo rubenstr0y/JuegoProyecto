@@ -16,6 +16,12 @@ public class BruteEnemy : BaseEnemy
 
     private void Update()
     {
+
+        if (Input.GetKeyDown("t"))
+        {
+            CurrentState = (CurrentState == EnemyStates.Idle) ? EnemyStates.Action : EnemyStates.Idle;
+        }
+
         Debug.Log("Entered " + CurrentState + " state");
 
         switch (CurrentState)
@@ -36,21 +42,22 @@ public class BruteEnemy : BaseEnemy
         }
     }
 
-
     public override void Idle()
     {
+        IsIdle = true;
+        IsAction = false;
         UpdateAnimator();
     }
 
     public override void Action()
     {
-
+        IsIdle = false;
+        IsAction = true;
+        UpdateAnimator();
     }
 
     public override void ChangeHole() 
     {
-        waitBeforeAction = true;
-        waitAfterAction = false;
         transform.position = FindClosestPosition();
     }
 
