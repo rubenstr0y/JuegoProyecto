@@ -4,12 +4,11 @@ using System.Collections;
 
 public class EnemyIdleState : EnemyState
 {
-    private CustomTimer idleTimer = new CustomTimer();
 
     public override void EnterState(EnemyStateManager enemyStateManager, BaseEnemy Enemy)
     {
         Debug.Log("Entrando al estado de " + enemyStateManager.currentState);
-        idleTimer.timerAmount = enemyStateManager.currentEnemy.idleTime;
+        enemyStateManager.currentEnemy.idleTimer.timerAmount = enemyStateManager.currentEnemy.idleTime;
     }
 
     public override void ExitState(EnemyStateManager enemyStateManager, BaseEnemy Enemy)
@@ -19,9 +18,9 @@ public class EnemyIdleState : EnemyState
 
     public override void UpdateState(EnemyStateManager enemyStateManager, BaseEnemy Enemy)
     {
-        idleTimer.UpdateTimer();
+        enemyStateManager.currentEnemy.idleTimer.UpdateTimer();
 
-        if (idleTimer.timerAmount <= 0f)
+        if (enemyStateManager.currentEnemy.idleTimer.timerAmount <= 0f)
         {
             enemyStateManager.SwitchState(enemyStateManager.enemyMeleeState);
         }
@@ -30,6 +29,7 @@ public class EnemyIdleState : EnemyState
     public override void FixedUpdateState(EnemyStateManager enemyStateManager, BaseEnemy Enemy)
     {
         enemyStateManager.currentEnemy.facingDirection = (enemyStateManager.currentEnemy.gameManager.player.transform.position - enemyStateManager.currentEnemy.transform.position).normalized;
+        enemyStateManager.currentEnemy.UpdateAnimatorFacingVector();
     }
 
     public override void OnCollisionEnter2D(EnemyStateManager enemyStateManager, BaseEnemy Enemy, Collision2D collision)

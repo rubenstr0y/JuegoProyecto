@@ -4,19 +4,29 @@ using System.Collections;
 
 public class EnemyMeleeState : EnemyState
 {
+    private CustomTimer actionTimer = new CustomTimer();
+
     public override void EnterState(EnemyStateManager enemyStateManager, BaseEnemy Enemy)
     {
         Debug.Log("Entrando al estado de " + enemyStateManager.currentState);
+        enemyStateManager.currentEnemy.SetAnimatorBool("IsAction", true);
+        enemyStateManager.currentEnemy.actionTimer.timerAmount = enemyStateManager.currentEnemy.actionTime;
     }
 
     public override void ExitState(EnemyStateManager enemyStateManager, BaseEnemy Enemy)
     {
-
+        enemyStateManager.currentEnemy.SetAnimatorBool("IsAction", false);
     }
 
     public override void UpdateState(EnemyStateManager enemyStateManager, BaseEnemy Enemy)
     {
 
+        enemyStateManager.currentEnemy.actionTimer.UpdateTimer();
+
+        if (enemyStateManager.currentEnemy.actionTimer.timerAmount <= 0f)
+        {
+            enemyStateManager.SwitchState(enemyStateManager.enemyIdleState);
+        }
     }
 
     public override void OnCollisionEnter2D(EnemyStateManager enemyStateManager, BaseEnemy Enemy, Collision2D collision)

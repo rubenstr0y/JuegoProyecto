@@ -437,16 +437,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35c18fa7580810748b582ba0f87ae803, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BruteEnemy
+  facingDirection: {x: 0, y: 0}
   enemyHealth: 0
   actionTime: 1
   idleTime: 2
   changingTime: 1
-  player: {fileID: 0}
   animator: {fileID: 12571710}
-  rb2d: {fileID: 1139229776}
-  GameManager: {fileID: 1482938455}
+  enemyRB2D: {fileID: 1139229776}
+  gameManager: {fileID: 1482938455}
   spriteRenderer: {fileID: 1971659219}
-  currentDebugState: 0
+  enemyStateManager: {fileID: 1139229778}
 --- !u!114 &1139229778
 MonoBehaviour:
   m_ObjectHideFlags: 0
