@@ -1,49 +1,50 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 
 public class BaseEnemy : MonoBehaviour
 {
     protected Vector2 facingDirection;
-    protected bool IsIdle;
     protected bool IsAction;
 
     public float enemyHealth;
     public float actionTime;
     public float idleTime;
+    public float changingTime;
 
-    protected bool isActionFinished;
+    protected bool IsUp;
 
     [SerializeField] protected MonoBehaviour player;
     [SerializeField] protected Animator animator;
     [SerializeField] protected Rigidbody2D rb2d;
     [SerializeField] protected GameManager GameManager;
+    [SerializeField] protected SpriteRenderer spriteRenderer;
+
+    [SerializeField] protected EnemyStates currentDebugState;
 
     protected enum EnemyStates
     {
         Idle,
         Action,
-        Changing
+        Changing,
+        GoUp,
+        GoDown
     }
 
     protected EnemyStates CurrentState;
 
-    public virtual void Idle() { }
-
-    public virtual void Action() { }
-
-    public virtual void ChangeHole() { }
-
-    protected void GoUp() { }
-
-    protected void GoDown() { }
-
     protected void Die() { }
+
+
+    protected void SetAction(bool isAction)
+    {
+        animator.SetBool("IsAction", isAction);
+    }
 
     protected void UpdateAnimator()
     {
-        facingDirection = (player.transform.position - transform.position).normalized;
-        animator.SetBool("IsAction", IsAction);
+        SetAction(IsAction);
 
         animator.SetFloat("DirectionX", facingDirection.x);
         animator.SetFloat("DirectionY", facingDirection.y);
