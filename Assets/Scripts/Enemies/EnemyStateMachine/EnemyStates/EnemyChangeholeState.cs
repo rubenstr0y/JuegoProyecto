@@ -1,10 +1,12 @@
 using UnityEngine;
+using System.Collections.Generic;
+using System.Collections;
 
 public class EnemyChangeholeState : EnemyState
 {
     public override void EnterState(EnemyStateManager enemyStateManager, BaseEnemy Enemy)
     {
-
+        Debug.Log("Entrando al estado de " + enemyStateManager.currentState);
     }
 
     public override void ExitState(EnemyStateManager enemyStateManager, BaseEnemy Enemy)

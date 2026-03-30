@@ -37,12 +37,10 @@ public class PlayerMoveState : PlayerState
         }
     }
 
-
     public override void FixedUpdateState(PlayerStateManager playerManager, PlayerInfo playerInfo)
     {
         playerInfo.playerMoveDirection = playerManager.playerController.inputManager.moveAction.ReadValue<Vector2>();
         playerManager.playerController.playerRB2D.linearVelocity = (playerInfo.playerMoveDirection.normalized * playerInfo.playerSpeed);
-
     }
 
     public override void OnTriggerEnter2D(PlayerStateManager playerManager, PlayerInfo playerInfo, Collider2D collider)

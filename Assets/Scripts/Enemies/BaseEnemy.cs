@@ -5,47 +5,26 @@ using System.Collections;
 
 public class BaseEnemy : MonoBehaviour
 {
-    protected Vector2 facingDirection;
-    protected bool IsAction;
+    public Vector2 facingDirection;
 
-    public float enemyHealth;
-    public float actionTime;
-    public float idleTime;
-    public float changingTime;
+    [SerializeField] public float enemyHealth;
+    [SerializeField] public float actionTime;
+    [SerializeField] public float idleTime;
+    [SerializeField] public float changingTime;
 
-    protected bool IsUp;
+    [SerializeField] public Animator animator;
+    [SerializeField] public Rigidbody2D enemyRB2D;
+    [SerializeField] public GameManager gameManager;
+    [SerializeField] public SpriteRenderer spriteRenderer;
+    [SerializeField] public EnemyStateManager enemyStateManager;
 
-    [SerializeField] protected MonoBehaviour player;
-    [SerializeField] protected Animator animator;
-    [SerializeField] protected Rigidbody2D rb2d;
-    [SerializeField] protected GameManager GameManager;
-    [SerializeField] protected SpriteRenderer spriteRenderer;
-
-    [SerializeField] protected EnemyStates currentDebugState;
-
-    protected enum EnemyStates
+    protected void SetAnimatorBool(string Animation, bool isAction)
     {
-        Idle,
-        Action,
-        Changing,
-        GoUp,
-        GoDown
+        animator.SetBool(Animation, isAction);
     }
 
-    protected EnemyStates CurrentState;
-
-    protected void Die() { }
-
-
-    protected void SetAction(bool isAction)
+    protected void UpdateAnimatorFacingVector()
     {
-        animator.SetBool("IsAction", isAction);
-    }
-
-    protected void UpdateAnimator()
-    {
-        SetAction(IsAction);
-
         animator.SetFloat("DirectionX", facingDirection.x);
         animator.SetFloat("DirectionY", facingDirection.y);
     }
