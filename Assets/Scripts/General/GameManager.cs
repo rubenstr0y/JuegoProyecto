@@ -4,7 +4,8 @@ using System.Collections.Generic;
 public class GameManager : MonoBehaviour
 {
 
-    [SerializeField] private BruteEnemy testEnemy;
+    [SerializeField] public BruteEnemy testEnemy;
+    [SerializeField] public MonoBehaviour player;
 
     [SerializeField] private Hole[] Holes;
 

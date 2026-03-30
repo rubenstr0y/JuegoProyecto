@@ -22,6 +22,8 @@ public class BruteEnemy : BaseEnemy
             CurrentState = (CurrentState == EnemyStates.Idle) ? EnemyStates.Action : EnemyStates.Idle;
         }
 
+
+
         Debug.Log("Entered " + CurrentState + " state");
 
         switch (CurrentState)
@@ -37,23 +39,19 @@ public class BruteEnemy : BaseEnemy
             case EnemyStates.Changing:
                 ChangeHole();
                 break;
-
-            break;
         }
     }
 
     public override void Idle()
     {
-        IsIdle = true;
         IsAction = false;
         UpdateAnimator();
     }
 
     public override void Action()
     {
-        IsIdle = false;
         IsAction = true;
-        UpdateAnimator();
+        animator.SetBool("IsAction", IsAction);
     }
 
     public override void ChangeHole() 
