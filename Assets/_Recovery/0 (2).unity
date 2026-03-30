@@ -440,12 +440,10 @@ MonoBehaviour:
   enemyHealth: 0
   actionTime: 0
   idleTime: 0
-  changingTime: 0
   player: {fileID: 1853281760}
   animator: {fileID: 12571710}
   rb2d: {fileID: 1139229776}
   GameManager: {fileID: 1482938455}
-  spriteRenderer: {fileID: 1971659219}
 --- !u!1001 &1246620537
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -757,11 +755,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a1f0750db5b71749b2e30a09de52ea7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
---- !u!212 &1971659219 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 2841264803985757633, guid: fe06b1c8a7b56d849bb57ff7989eb4c7, type: 3}
-  m_PrefabInstance: {fileID: 2328063660164528393}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1684355171720549742
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -780,11 +773,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4906640588791684055, guid: 06590fa133ec3da42ae361a2d9e71252, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.33
+      value: -3.6
       objectReference: {fileID: 0}
     - target: {fileID: 4906640588791684055, guid: 06590fa133ec3da42ae361a2d9e71252, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.85
+      value: 1.99
       objectReference: {fileID: 0}
     - target: {fileID: 4906640588791684055, guid: 06590fa133ec3da42ae361a2d9e71252, type: 3}
       propertyPath: m_LocalPosition.z
@@ -894,18 +887,6 @@ PrefabInstance:
     - target: {fileID: 2528409657683443754, guid: fe06b1c8a7b56d849bb57ff7989eb4c7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2841264803985757633, guid: fe06b1c8a7b56d849bb57ff7989eb4c7, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2841264803985757633, guid: fe06b1c8a7b56d849bb57ff7989eb4c7, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2841264803985757633, guid: fe06b1c8a7b56d849bb57ff7989eb4c7, type: 3}
-      propertyPath: m_Color.r
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5023074445105471123, guid: fe06b1c8a7b56d849bb57ff7989eb4c7, type: 3}
       propertyPath: m_Controller
