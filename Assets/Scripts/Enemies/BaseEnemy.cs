@@ -43,7 +43,6 @@ public class BaseEnemy : MonoBehaviour
     protected void UpdateAnimator()
     {
         facingDirection = (player.transform.position - transform.position).normalized;
-        animator.SetBool("IsIdle",IsIdle);
         animator.SetBool("IsAction", IsAction);
 
         animator.SetFloat("DirectionX", facingDirection.x);
