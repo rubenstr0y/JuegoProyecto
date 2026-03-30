@@ -437,15 +437,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35c18fa7580810748b582ba0f87ae803, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BruteEnemy
+  facingDirection: {x: 0, y: 0}
+  isActionFinished: 0
   enemyHealth: 0
-  actionTime: 0
-  idleTime: 0
-  changingTime: 0
-  player: {fileID: 1853281760}
+  actionTime: 1
+  idleTime: 2
+  changingTime: 1
   animator: {fileID: 12571710}
-  rb2d: {fileID: 1139229776}
-  GameManager: {fileID: 1482938455}
+  enemyRB2D: {fileID: 1139229776}
   spriteRenderer: {fileID: 1971659219}
+  gameManager: {fileID: 1482938455}
+  enemyStateManager: {fileID: 1139229778}
+--- !u!114 &1139229778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1139229773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eefcfb0ed3967d648bff57ea75d2a706, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyStateManager
+  currentEnemy: {fileID: 1139229777}
 --- !u!1001 &1246620537
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -770,6 +785,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 93324897336883031, guid: 06590fa133ec3da42ae361a2d9e71252, type: 3}
+      propertyPath: playerSpeed
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 1473847745895731512, guid: 06590fa133ec3da42ae361a2d9e71252, type: 3}
       propertyPath: m_Name
       value: Player
@@ -931,6 +950,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2402405345692686913, guid: fe06b1c8a7b56d849bb57ff7989eb4c7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1139229778}
     - targetCorrespondingSourceObject: {fileID: 2402405345692686913, guid: fe06b1c8a7b56d849bb57ff7989eb4c7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1139229777}

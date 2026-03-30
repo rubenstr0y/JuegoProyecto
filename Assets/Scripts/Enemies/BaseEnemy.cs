@@ -5,48 +5,52 @@ using System.Collections;
 
 public class BaseEnemy : MonoBehaviour
 {
-    protected Vector2 facingDirection;
-    protected bool IsAction;
+    public Vector2 facingDirection;
+    public bool isActionFinished;
 
-    public float enemyHealth;
-    public float actionTime;
-    public float idleTime;
-    public float changingTime;
+    [SerializeField] public float enemyHealth;
+    [SerializeField] public float actionTime;
+    [SerializeField] public float idleTime;
+    [SerializeField] public float changingTime;
 
-    protected bool IsUp;
 
-    [SerializeField] protected MonoBehaviour player;
-    [SerializeField] protected Animator animator;
-    [SerializeField] protected Rigidbody2D rb2d;
-    [SerializeField] protected GameManager GameManager;
-    [SerializeField] protected SpriteRenderer spriteRenderer;
+    [SerializeField] public Animator animator;
+    [SerializeField] public Rigidbody2D enemyRB2D;
+    [SerializeField] public SpriteRenderer spriteRenderer;
 
-    [SerializeField] protected EnemyStates currentDebugState;
 
-    protected enum EnemyStates
+    [SerializeField] public GameManager gameManager;
+    [SerializeField] public EnemyStateManager enemyStateManager;
+
+    public CustomTimer idleTimer;
+    public CustomTimer actionTimer;
+    public CustomTimer changingTimer;
+
+    public BaseEnemy()
     {
-        Idle,
-        Action,
-        Changing,
-        GoUp,
-        GoDown
+        idleTimer = new CustomTimer(idleTime);
+        actionTimer = new CustomTimer(actionTime);
+        changingTimer = new CustomTimer(changingTime);
     }
 
-    protected EnemyStates CurrentState;
-
-    protected void Die() { }
-
-
-    protected void SetAction(bool isAction)
+    public void SetAnimatorBool(string Animation, bool value)
     {
-        animator.SetBool("IsAction", isAction);
+        animator.SetBool(Animation, value);
     }
 
-    protected void UpdateAnimator()
+    public void UpdateAnimatorFacingVector()
     {
-        SetAction(IsAction);
-
         animator.SetFloat("DirectionX", facingDirection.x);
         animator.SetFloat("DirectionY", facingDirection.y);
+    }
+
+    public virtual Vector2 FindNextHole() 
+    {
+        return Vector2.zero;
+    }
+
+    public void ChangePosition(Vector2 newPosition)
+    {
+        transform.position = newPosition;
     }
 }

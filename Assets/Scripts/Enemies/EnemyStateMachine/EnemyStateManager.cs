@@ -10,7 +10,7 @@ public class EnemyStateManager : MonoBehaviour
     public EnemyMeleeState enemyMeleeState              = new EnemyMeleeState();
     public EnemyChangeholeState enemyChangeholeState    = new EnemyChangeholeState();
 
-    [SerializeField] protected BaseEnemy currentEnemy;
+    [SerializeField] public BaseEnemy currentEnemy;
 
     private void Start()
     {
@@ -18,7 +18,7 @@ public class EnemyStateManager : MonoBehaviour
         currentState.EnterState(this, currentEnemy);
     }
 
-    protected void SwitchState(EnemyState newState)
+    public void SwitchState(EnemyState newState)
     {
         currentState.ExitState(this, currentEnemy);
         currentState = newState;
