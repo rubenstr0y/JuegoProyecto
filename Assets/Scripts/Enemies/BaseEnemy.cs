@@ -6,6 +6,7 @@ using System.Collections;
 public class BaseEnemy : MonoBehaviour
 {
     public Vector2 facingDirection;
+    public bool isActionFinished;
 
     [SerializeField] public float enemyHealth;
     [SerializeField] public float actionTime;
@@ -23,21 +24,33 @@ public class BaseEnemy : MonoBehaviour
 
     public CustomTimer idleTimer;
     public CustomTimer actionTimer;
+    public CustomTimer changingTimer;
 
     public BaseEnemy()
     {
         idleTimer = new CustomTimer(idleTime);
         actionTimer = new CustomTimer(actionTime);
+        changingTimer = new CustomTimer(changingTime);
     }
 
-    public void SetAnimatorBool(string Animation, bool isAction)
+    public void SetAnimatorBool(string Animation, bool value)
     {
-        animator.SetBool(Animation, isAction);
+        animator.SetBool(Animation, value);
     }
 
     public void UpdateAnimatorFacingVector()
     {
         animator.SetFloat("DirectionX", facingDirection.x);
         animator.SetFloat("DirectionY", facingDirection.y);
+    }
+
+    public virtual Vector2 FindNextHole() 
+    {
+        return Vector2.zero;
+    }
+
+    public void ChangePosition(Vector2 newPosition)
+    {
+        transform.position = newPosition;
     }
 }

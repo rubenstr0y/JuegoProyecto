@@ -22,7 +22,20 @@ public class EnemyIdleState : EnemyState
 
         if (enemyStateManager.currentEnemy.idleTimer.timerAmount <= 0f)
         {
-            enemyStateManager.SwitchState(enemyStateManager.enemyMeleeState);
+            
+            // Has made the action --> Change Hole
+
+            if (enemyStateManager.currentEnemy.isActionFinished)
+            {
+                enemyStateManager.SwitchState(enemyStateManager.enemyChangeholeState);
+            }
+
+            // Has not made the action --> Action
+
+            else
+            {
+                enemyStateManager.SwitchState(enemyStateManager.enemyMeleeState);
+            }
         }
     }
 

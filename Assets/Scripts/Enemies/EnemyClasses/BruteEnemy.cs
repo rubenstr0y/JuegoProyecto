@@ -10,7 +10,7 @@ public class BruteEnemy : BaseEnemy
 
     }
 
-    private Vector2 FindClosestPosition()
+    public override Vector2 FindNextHole()
     {
         List<Hole> AvaliableHoles = gameManager.SearchAvaliableHoles();
         Vector2 playerPosition = gameManager.player.transform.position;

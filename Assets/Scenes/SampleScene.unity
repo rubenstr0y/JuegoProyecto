@@ -438,14 +438,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BruteEnemy
   facingDirection: {x: 0, y: 0}
+  isActionFinished: 0
   enemyHealth: 0
   actionTime: 1
   idleTime: 2
   changingTime: 1
   animator: {fileID: 12571710}
   enemyRB2D: {fileID: 1139229776}
-  gameManager: {fileID: 1482938455}
   spriteRenderer: {fileID: 1971659219}
+  gameManager: {fileID: 1482938455}
   enemyStateManager: {fileID: 1139229778}
 --- !u!114 &1139229778
 MonoBehaviour:
@@ -784,6 +785,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 93324897336883031, guid: 06590fa133ec3da42ae361a2d9e71252, type: 3}
+      propertyPath: playerSpeed
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 1473847745895731512, guid: 06590fa133ec3da42ae361a2d9e71252, type: 3}
       propertyPath: m_Name
       value: Player
